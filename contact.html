@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+
+    <!-- Google Font & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Initialize EmailJS with your public key
+        (function(){
+            emailjs.init('bXhmla1SXrnbtClmh');
+        })();
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        h1, h2, h3, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #1e1e1e;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            opacity: 0.8;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 40px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc29;
+        }
+
+        main {
+            padding: 60px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            background: linear-gradient(135deg, #ffffff, #f7f7f7);
+            min-height: calc(100vh - 120px);
+        }
+
+        .contact-section {
+            max-width: 850px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            display: grid;
+            gap: 30px;
+        }
+
+        .contact-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #ff6b6b;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+            color: #555;
+            font-size: 1.1rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #ff6b6b;
+            box-shadow: 0 0 8px rgba(255, 107, 107, 0.4);
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #ff6b6b, #ffcc29);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.3s;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        button[type="submit"]:hover {
+            background: linear-gradient(45deg, #ffcc29, #ff6b6b);
+            transform: translateY(-4px);
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            color: #ff6b6b;
+        }
+
+        .success-message,
+        .error-message {
+            display: none;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .success-message {
+            color: green;
+        }
+
+        .error-message {
+            color: red;
+        }
+
+        .social-media {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .social-media h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            color: #333;
+            font-size: 2rem;
+            margin: 0 15px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #ff6b6b;
+            transform: scale(1.1);
+        }
+
+        .map-container {
+            margin-top: 30px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 350px;
+            border: 0;
+            border-radius: 10px;
+        }
+
+        footer {
+            background-color: #1e1e1e;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* WhatsApp Icon */
+        .whatsapp-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            padding: 20px;
+            color: white;
+            font-size: 2rem;
+            border-radius: 70%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            z-index: 999;
+        }
+
+        .whatsapp-icon:hover {
+            transform: scale(1.2);
+            background-color: #128C7E;
+        }
+
+        @media (max-width: 768px) {
+            .contact-section {
+                padding: 20px;
+            }
+
+            .contact-section h2 {
+                font-size: 2rem;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                font-size: 0.9rem;
+            }
+
+            button[type="submit"] {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact-section">
+            <h2>Contact Me</h2>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" placeholder="example@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Write your message here" required></textarea>
+                    </div>
+                    <div class="loading" id="loading">Sending...</div>
+                    <button type="submit">Send Message</button>
+                </form>
+                <div class="success-message" id="successMessage">Your message has been sent successfully!</div>
+                <div class="error-message" id="errorMessage">There was an error sending your message. Please try again.</div>
+            </div>
+
+            <div class="social-media">
+                <h3>Connect with Me</h3>
+                <div class="social-icons">
+                    <a href="#" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-twitter-square"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-github-square"></i></a>
+                </div>
+            </div>
+
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509031!2d144.95373531531682!3d-37.81627927975136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f21b47d%3A0x5045675218ceed30!2sFederation%20Square!5e0!3m2!1sen!2sau!4v1609457531737!5m2!1sen!2sau"
+                    allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <a href="https://wa.me/1234567890" class="whatsapp-icon" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Manish Matela. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
+<script>
+    (function() {
+        emailjs.init("bXhmla1SXrnbtClmh"); // Your public key
+    })();
+
+    // Form validation and submission
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+        event.preventDefault();  // Prevent form from submitting the default way
+
+        // Validate the email format
+        const email = document.getElementById("email").value;
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+        const loading = document.getElementById("loading");
+        const successMessage = document.getElementById("successMessage");
+        const errorMessage = document.getElementById("errorMessage");
+
+        // Hide previous messages
+        successMessage.style.display = "none";
+        errorMessage.style.display = "none";
+
+        if (!emailPattern.test(email)) {
+            errorMessage.style.display = "block";  // Show error if email is invalid
+            return;
+        }
+
+        loading.style.display = "block";  // Show loading message
+
+        // Send email using EmailJS
+        emailjs.sendForm('service_gbrtsk6', 'template_cf15q55', this)
+        .then(() => {
+            loading.style.display = "none";  // Hide loading
+            successMessage.style.display = "block";  // Show success message
+
+            // Automatically send a reply to the user using the second email template
+            return emailjs.send('service_gbrtsk6', 'template_8jwcwi9', {
+                user_name: document.getElementById("name").value,
+                user_email: email,
+                user_message: document.getElementById("message").value
+            });
+        }, (error) => {
+            loading.style.display = "none";  // Hide loading
+            errorMessage.textContent = "Error sending message. Please try again.";
+            errorMessage.style.display = "block";  // Show error message
+            console.error("Error sending email:", error);
+        });
+    });
+</script>
+</body>
+
+</html>

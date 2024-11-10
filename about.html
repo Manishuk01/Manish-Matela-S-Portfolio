@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Portfolio with Dark Mode</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <style>
+          body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        h1, h2, h3, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #1e1e1e;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            opacity: 0.8;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 40px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc29;
+        }
+
+      
+
+        /* Hero Section */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(90deg, #ffcc29, #ff6b6b);
+            animation: bg 5s linear infinite;
+        }
+
+        @keyframes bg {
+            100% {
+                filter: hue-rotate(360deg);
+            }
+        }
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .btn {
+            background-color: #333;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 50px;
+            margin: 10px;
+            display: inline-block;
+            transition: background-color 0.3s, transform 0.3s;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #ffcc29;
+            transform: translateY(-5px);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 60px;
+            background-color: #f4f4f9;
+            text-align: center;
+        }
+
+        .about-section h2 {
+            font-size: 2.5rem;
+            color: #ff6b6b;
+            margin-bottom: 40px;
+            animation: fadeInDown 1s;
+        }
+
+        .about-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Education & Skills Section */
+        .section {
+            padding: 60px;
+            text-align: center;
+            background-color: #ff6b6b;
+            color: #fff;
+            background: linear-gradient(135deg, #21afcb 0%, #ff6b6b 100%);
+
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .grid-item {
+            background-color: #45afdc;
+            padding: 20px;
+            color: #fff;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .grid-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 60px;
+            background-color: #f4f4f9;
+            text-align: center;
+        }
+
+        .services-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        .services-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .service-box {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .service-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-box i {
+            font-size: 3rem;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+        }
+
+        .service-box h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .service-box p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1e1e1e;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer-about {
+            margin-bottom: 10px;
+        }
+
+        .social-icons a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #ffcc29;
+        }
+
+        .footer-text {
+            margin-top: 20px;
+        }
+
+        
+      
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .hero-section p {
+                font-size: 1rem;
+            }
+
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 1024px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+     
+    </header>
+
+    <section class="hero-section">
+        <div>
+            <h1>Welcome to My Portfolio</h1>
+            <p>I’m Manish Matela, a web developer and web Designer passionate about creating dynamic and stylish websites.</p>
+            <a href="#about" class="btn">Learn More</a>
+            <a href="contact.html" class="btn">Contact Me</a>
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <h2>Who I Am</h2>
+            <p>I’m a software developer specializing in building responsive, user-friendly websites and web applications using Java, HTML5, CSS3, JavaScript, and various modern frameworks. I have a strong foundation in multiple programming languages including C, C++, HTML, CSS, JavaScript, and Java. Currently, I am passionate about using technology to solve real-world problems.</p>
+        </div>
+    </section>
+
+    <section id="education" class="section">
+        <h2>Education & Skills</h2>
+        <div class="grid-container">
+            <div class="grid-item">
+                <h3>Education</h3>
+                <p><strong>Bachelor of Arts</strong> | Uttarakhand Open University, Nainital</p>
+                <p>Pursuing BA with a focus on History, Economics, and English.</p>
+            </div>
+            <div class="grid-item">
+                <h3>Skills</h3>
+                <p>Languages: C, C++, HTML, CSS, JavaScript, Java</p>
+                <p>Tools: VS Code, GitHub, Figma, Canva</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section">
+        <h2>Services</h2>
+        <div class="services-content">
+            <div class="service-box">
+                <i class="fas fa-code"></i>
+                <h3>Web Development</h3>
+                <p>Creating modern, responsive websites that perform on all devices using the latest technologies.</p>
+            </div>
+            <div class="service-box">
+                <i class="fas fa-database"></i>
+                <h3>Database Management</h3>
+                <p>Designing and managing robust databases for scalable web applications.</p>
+            </div>
+            <div class="service-box">
+                <i class="fas fa-chart-line"></i>
+                <h3>SEO Optimization</h3>
+                <p>Improving website visibility and ranking through expert SEO practices.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-about">
+            Thanks for visiting my portfolio. Feel free to connect with me through social media or contact me for any web development inquiries!
+        </div>
+
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/manish-matela">LinkedIn</a>
+            <a href="https://github.com/Manishuk01">GitHub</a>
+            <a href="">Twitter</a>
+        </div>
+
+        <div class="footer-text">
+            &copy; 2024 Manish Matela | All rights reserved.
+        </div>
+    </footer>
+
+    
+</body>
+
+</html>

@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Portfolio with Dark Mode</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- Add icon library (optional, replace with your preferred icons) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
+<script src="JavaScript/Email_send.js"></script>
+    <script type="text/javascript">
+        // Initialize EmailJS with your public key
+        (function(){
+            emailjs.init('bXhmla1SXrnbtClmh');
+        })();
+    </script>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        h1, h2, h3, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #1e1e1e;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            opacity: 0.8;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 40px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc29;
+        }
+
+        /* Home Section */
+        .home-section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(90deg, #ffcc29, #ff6b6b);
+            animation: bg 5s linear infinite;
+        }
+
+        @keyframes bg {
+            100% {
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        .intro h1 {
+            font-size: 3rem;
+            color: #fff;
+        }
+
+        .intro h2 {
+            font-size: 2.5rem;
+            color: #fff;
+        }
+
+        .intro p {
+            font-size: 1.2rem;
+            color: #f4f4f9;
+        }
+
+        .greeting span {
+            color: #ffcc29;
+            font-weight: 600;
+        }
+
+        .button-container a {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 24px;
+            border-radius: 50px;
+            color: #fff;
+            background-color: #333;
+            transition: transform 0.3s ease;
+        }
+
+        .button-container a:hover {
+            transform: scale(1.05);
+            background-color: #ffcc29;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 50px;
+            background-color: #f4f4f9;
+            text-align: center;
+            background: linear-gradient(135deg, #21afcb 0%, #ff6b6b 100%);
+
+        }
+
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #ff6b6b;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            
+        }
+
+        .grid-item {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .grid-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-media {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .projects-section a{
+            color: rgb(245, 244, 246);
+            background-color: blueviolet;
+            border-radius: 5px;
+            padding: 2px;
+            box-shadow: 0 20px 30px rgba(1, 0, 0, 0.2);;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            padding: 50px;
+            background-color: #1e1e1e;
+            color: #fff;
+            text-align: center;
+            /* background: linear-gradient(135deg, #a13678 0%, #ff6b6b 100%); */
+
+        }
+        .skills-section h2{
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #ff6b6b;
+        }
+        .skills-grid-container,.grid-container{
+            display: grid;
+            gap: 20px;
+        }
+
+        .skills-grid-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        justify-items: center;
+        }
+
+        .skill-item {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-image {
+            width: 50px;
+            height: auto;
+        }
+
+        /* About Section */
+        .about-container {
+            padding: 50px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .about-container h2 {
+            color: #ff6b6b;
+            text-align: center;
+        }
+
+        .about-content {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 50px;
+            background-color: #1e1e1e;
+            color: #fff;
+            text-align: center;
+            background: linear-gradient(135deg, #db8c8c 0%, #d9df85 100%);
+
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #333;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .submit-button {
+            background-color: #ff6b6b;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background-color: #ffcc29;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Animations */
+        .animate__animated {
+            opacity: 0;
+            animation-fill-mode: forwards;
+            animation-duration: 1s;
+        }
+
+        .animate__fadeIn {
+            opacity: 1;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+         /* Keyframes for sliding in from the right */
+    @keyframes slideIn {
+        0% {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+       /* Large Desktop and Laptop Screens (1200px and above) */
+       @media (min-width: 1200px) {
+            .home-section h1 {
+                font-size: 4rem;
+            }
+
+            .projects-section, .skills-section, .about-container, .contact-section {
+                padding: 70px;
+            }
+
+            .grid-container {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            .skills-grid-container {
+                gap: 30px;
+               
+
+            }
+        }
+
+        /* Medium Screens (768px to 1199px) */
+        @media (max-width: 1199px) and (min-width: 768px) {
+            .home-section h1 {
+                font-size: 3rem;
+            }
+
+            .projects-section, .skills-section, .about-container, .contact-section {
+                padding: 40px;
+            }
+
+            .grid-container {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+
+            .skills-grid-container {
+                gap: 25px;
+                
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+        }
+
+        /* Small Tablets (600px to 767px) */
+        @media (max-width: 767px) and (min-width: 600px) {
+            .home-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .projects-section, .skills-section {
+            padding: 10px;
+        }
+
+        .skills-grid-container, .grid-container {
+            grid-template-columns: 1fr; /* Stack items vertically */
+        }
+
+        /* Slide-in animation for skill and project items */
+        .skill-item, 
+        .grid-item {
+            animation: slideIn 0.5s forwards;
+        }
+
+        /* Apply staggered animation delays for a cascading slide-in effect */
+        .skill-item:nth-child(1) { animation-delay: 0.1s; }
+        .skill-item:nth-child(2) { animation-delay: 0.2s; }
+        .skill-item:nth-child(3) { animation-delay: 0.3s; }
+        .skill-item:nth-child(4) { animation-delay: 0.4s; }
+        .skill-item:nth-child(5) { animation-delay: 0.5s; }
+
+        .grid-item:nth-child(1) { animation-delay: 0.1s; }
+        .grid-item:nth-child(2) { animation-delay: 0.2s; }
+        .grid-item:nth-child(3) { animation-delay: 0.3s; }
+        .grid-item:nth-child(4) { animation-delay: 0.4s; }
+        .grid-item:nth-child(5) { animation-delay: 0.5s; }
+
+            nav ul {
+                gap: 10px;
+                display: flex;
+                flex-direction: row;
+             
+             font-size : 15px;
+            }
+
+         
+        }
+
+        /*
+        /* Small Phones (up to 599px) */
+        @media (max-width: 599px) {
+            .home-section h1 {
+                font-size: 2rem;
+            }
+
+            .projects-section, .skills-section {
+            padding: 10px;
+        }
+
+        .skills-grid-container, .grid-container {
+            grid-template-columns: 1fr; /* Stack items vertically */
+        }
+
+        /* Slide-in animation for skill and project items */
+        .skill-item, 
+        .grid-item {
+            animation: slideIn 0.5s forwards;
+        }
+
+        /* Apply staggered animation delays for a cascading slide-in effect */
+        .skill-item:nth-child(1) { animation-delay: 0.1s; }
+        .skill-item:nth-child(2) { animation-delay: 0.2s; }
+        .skill-item:nth-child(3) { animation-delay: 0.3s; }
+        .skill-item:nth-child(4) { animation-delay: 0.4s; }
+        .skill-item:nth-child(5) { animation-delay: 0.5s; }
+
+        .grid-item:nth-child(1) { animation-delay: 0.1s; }
+        .grid-item:nth-child(2) { animation-delay: 0.2s; }
+        .grid-item:nth-child(3) { animation-delay: 0.3s; }
+        .grid-item:nth-child(4) { animation-delay: 0.4s; }
+        .grid-item:nth-child(5) { animation-delay: 0.5s; }
+
+            nav ul {
+                gap: 10px;
+                display: flex;
+                flex-direction: row;
+             
+             font-size : 15px;
+            }
+
+          
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+  <!-- Home Section -->
+  <section id="home" class="home-section">
+    <div class="intro">
+        <h1>Welcome to My Portfolio</h1>
+        <h2 class="greeting">Hi, I'm <span id="dynamic-text"></span></h2>
+        <p>A creative and dynamic developer focused on building sleek, responsive web applications.</p>
+        <div class="button-container">
+            <a href="resume.html">Download Resume</a>
+            <a href="https://github.com/Manishuk01">Visit GitHub</a>
+        </div>
+    </div>
+</section>
+
+    <section id="projects" class="projects-section animate__animated animate__fadeIn">
+        <h2 class="section-title">My Projects</h2>
+        <div id="project-grid" class="grid-container">
+            <!-- Dynamic project items will be inserted here -->
+        </div>
+    </section>
+
+    <section id="skills" class="skills-section animate__animated animate__fadeIn">
+        <h2>Skills</h2>
+        <div class="skills-grid-container" id="skills-grid">
+            <!-- Skills will be dynamically added here by JavaScript -->
+        </div>
+    </section>
+
+    <section id="about" class="about-container">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <p>
+                My name is Manish Matela, and I am currently pursuing a Bachelor of Arts from SSJ University, Almora (2021-2024). 
+                I have honed my skills in various programming languages, including C, C++, HTML, CSS, JavaScript, Java, and advanced Java. 
+                I also have experience in SEO, database management, and digital marketing.
+            </p>
+            <p>I enjoy problem-solving and have a passion for technology, combined with strong leadership and teamwork abilities.</p>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section animate__animated animate__fadeIn">
+        <div class="contact-container">
+            <h2>Contact Me</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Send</button>
+            </form>
+            <p id="formMessage" class="form-message"></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+    </footer>
+
+    <script>
+
+        // Dynamic greeting text
+        const dynamicText = document.getElementById('dynamic-text');
+        const names = ['Manish Matela', 'a Web Developer'];
+        let index = 0;
+
+        function updateText() {
+            dynamicText.textContent = names[index];
+            index = (index + 1) % names.length;
+        }
+
+        setInterval(updateText, 2000);
+        // Dynamic Projects Section
+   document.addEventListener('DOMContentLoaded', function () {
+       const projectData = [
+           {
+               title: 'Movie Booking System',
+               description: 'A dynamic system built with Struts and Java.',
+               link: '#',
+               media: { type: 'image', src: 'images/movie.jpeg' } // Image example
+           },
+           {
+               title: 'Food Ordering Website',
+               description: 'A responsive website for ordering food.',
+               link: '#',
+               media: { type: 'video', src: 'video/food.mp4' } // Video example
+           },
+           {
+               title: 'University Website',
+               description: 'An interactive university platform.',
+               link: '#',
+               media: { type: 'image', src: 'images/skylight.jpeg' }
+           },
+           {
+               title: 'Chatbot App',
+               description: 'A chatbot to read PDFs using Java.',
+               link: '#',
+               media: { type: 'image', src: 'images/chatbot.png' }
+           }
+       ];
+
+       const projectGrid = document.getElementById('project-grid');
+
+       projectData.forEach((project) => {
+           const projectItem = document.createElement('div');
+           projectItem.classList.add('grid-item');
+
+           // Conditionally render image or video based on 'media.type'
+           let mediaElement;
+           if (project.media.type === 'image') {
+               mediaElement = `<img src="${project.media.src}" alt="${project.title}" class="project-media">`;
+           } else if (project.media.type === 'video') {
+               mediaElement = `<video controls class="project-media">
+                               <source src="${project.media.src}" type="video/mp4">
+                               Your browser does not support the video tag.
+                           </video>`;
+           }else if (project.media.type === 'video') {
+    mediaElement = `<video controls class="project-media">
+                        <source src="${project.media.src}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>`;
+}
+ else if (project.media.type === 'video') {
+               mediaElement = `<video controls class="project-media">
+                                   <source src="${project.media.src}" type="video/mp4">
+                                   Your browser does not support the video tag.
+                               </video>`;
+           }
+
+           projectItem.innerHTML = `
+               <h3>${project.title}</h3>
+               ${mediaElement}
+               <p>${project.description}</p>
+               <a href="${project.link}" class="btn btn-primary">View Project</a>
+           `;
+
+           projectGrid.appendChild(projectItem);
+       });
+   });
+
+
+   document.addEventListener('DOMContentLoaded', function () {
+       const skillsData = [
+           {
+               name: 'HTML',
+               description: 'Markup language for creating web pages.',
+               image: 'images/html-5.png' // Image for the skill
+           },
+           {
+               name: 'CSS',
+               description: 'Stylesheets for designing websites.',
+               image: 'images/css-3.png'
+           },
+           {
+               name: 'JavaScript',
+               description: 'Programming language for web development.',
+               image: 'images/Javascript.png'
+           },
+           {
+               name: 'React',
+               description: 'JavaScript library for building user interfaces.',
+               image: 'images/react.png'
+           },
+
+           {
+               name: 'Node.js',
+               description: 'JavaScript runtime for server-side programming.',
+               image: 'images/node-js.png'
+           },
+           {
+               name: 'Java',
+               description: 'Java opps for server-side programming.',
+               image: 'images/java.png'
+           },
+           {
+               name: 'C++',
+               description: 'JavaScript runtime for server-side programming.',
+               image: 'images/c-.png'
+           },
+           {
+               name: 'C',
+               description: 'JavaScript runtime for server-side programming.',
+               image: 'images/c.png'
+           },
+           {
+               name: 'Advance java',
+               description: 'JavaScript runtime for server-side programming.',
+               image: 'images/Adjava.png'
+           },
+           
+       ];
+
+       const skillsGrid = document.getElementById('skills-grid');
+
+       skillsData.forEach(skill => {
+           const skillItem = document.createElement('div');
+           skillItem.classList.add('skill-item');
+
+           skillItem.innerHTML = `
+           <img src="${skill.image}" alt="${skill.name}" class="skill-image">
+           <div class="skill-info">
+               <h3>${skill.name}</h3>
+               <p>${skill.description}</p>
+           </div>
+       `;
+
+           skillsGrid.appendChild(skillItem);
+       });
+   });
+  
+   document.addEventListener('DOMContentLoaded', function () {
+            const dynamicText = document.getElementById('dynamic-text');
+            const names = ['Manish Matela', 'A Developer', 'A Problem Solver'];
+            let index = 0;
+
+            setInterval(() => {
+                dynamicText.textContent = names[index];
+                index = (index + 1) % names.length;
+            }, 3000);
+        });
+
+
+
+       
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        fetch('http://localhost:3000/send-email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name, email, message }),
+        })
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('formMessage').innerText = data;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+
+
+    </script>
+</body>
+
+</html>

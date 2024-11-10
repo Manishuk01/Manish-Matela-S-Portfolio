@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Services - Manish Matela</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        h1, h2, h3, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #1e1e1e;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            opacity: 0.8;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 40px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc29;
+        }
+        /* Services Section */
+        .services-section {
+            padding: 50px;
+            background-color: #f4f4f9;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.5s ease, color 0.5s ease;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card .icon {
+            font-size: 3rem;
+            color: #ff6b6b;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        .service-card a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #ff6b6b;
+            color: #fff;
+            border-radius: 50px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .service-card a:hover {
+            background-color: #ffcc29;
+        }
+
+        /* Social Media Buttons */
+        .social-media {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .social-media a {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 24px;
+            border-radius: 50px;
+            background-color: #333;
+            color: #fff;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .social-media a:hover {
+            transform: scale(1.1);
+            background-color: #ffcc29;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .services-section {
+                padding: 20px;
+            }
+
+            
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                flex-direction: column;
+            }
+
+            .service-card {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .service-card {
+                padding: 20px;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="services-section">
+        <h2 class="section-title">My Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-code icon"></i>
+                <h3>Web Development</h3>
+                <p>Creating responsive and dynamic websites using HTML, CSS, JavaScript, and Java frameworks like Struts.</p>
+                <a href="web-development.html">Learn More</a>
+            </div>
+            <div class="service-card">
+                <i class="fab fa-java icon"></i>
+                <h3>Java Solutions</h3>
+                <p>Offering efficient Java-based backend solutions with frameworks like Struts and JPA for database management.</p>
+                <a href="java-solutions.html">Learn More</a>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-search icon"></i>
+                <h3>SEO Optimization</h3>
+                <p>Improving website traffic through SEO techniques for both on-page and off-page optimization.</p>
+                <a href="seo-optimization.html">Learn More</a>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-database icon"></i>
+                <h3>Database Management</h3>
+                <p>Setting up databases for efficient data storage, management, and retrieval, ensuring optimal performance.</p>
+                <a href="database-management.html">Learn More</a>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-mobile-alt icon"></i>
+                <h3>Custom Web Solutions</h3>
+                <p>Providing customized web solutions to fit your business needs, from simple websites to complex web applications.</p>
+                <a href="custom-web-solutions.html">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="social-media">
+        <a href="https://github.com/manishmatela" class="fab fa-github"></a>
+        <a href="https://linkedin.com/in/manishmatela" class="fab fa-linkedin"></a>
+        <a href="https://twitter.com/manishmatela" class="fab fa-twitter"></a>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Manish Matela. All rights reserved.</p>
+    </footer>
+
+    
+</body>
+
+</html>
